@@ -13,8 +13,8 @@ controller_credentials:
     update_secrets: false
     state: exists
     inputs:
-      insights_user: REPLACEME
-      insights_password: REPLACEME
+      username: REPLACEME
+      password: REPLACEME
 
 controller_inventory_sources:
   - name: Insights Inventory
