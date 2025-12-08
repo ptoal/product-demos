@@ -13,8 +13,8 @@ controller_credentials:
     update_secrets: false
     state: exists
     inputs:
-      username: REPLACEME
-      password: REPLACEME
+      username: "{{ insights_credential_username | default(lookup('env','ANSIBLE_INSIGHTS_CREDENTIAL_USERNAME')) }}"
+      password: "{{ insights_credential_password | default(lookup('env','ANSIBLE_INSIGHTS_CREDENTIAL_PASSWORD')) }}"
 
 controller_inventory_sources:
   - name: Insights Inventory
@@ -38,7 +38,7 @@ controller_templates:
     survey_enabled: true
     extra_vars:
       activation_key: !unsafe "RHEL{{ ansible_distribution_major_version }}_{{ env }}"
-      org_id: REPLACEME
+      org_id: "{{ insights_credential_org_id | default(lookup('env','ANSIBLE_INSIGHTS_CREDENTIAL_ORG_ID')) }}"
     survey:
       name: ''
       description: ''
